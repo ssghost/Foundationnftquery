@@ -1,0 +1,62 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Token
+    network: mainnet
+    source:
+      address: "0xc9fe4ffc4be41d93a1a7189975cd360504ee361a"
+      abi: Token
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - BaseURIUpdated
+        - Minted
+        - NFTCreatorMigrated
+        - NFTMarketUpdated
+        - NFTMetadataUpdated
+        - NFTOwnerMigrated
+        - PaymentAddressMigrated
+        - ProxyCallContractUpdated
+        - TokenCreatorPaymentAddressSet
+        - TokenCreatorUpdated
+        - TokenIPFSPathUpdated
+        - Transfer
+      abis:
+        - name: Token
+          file: ./abis/Token.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: BaseURIUpdated(string)
+          handler: handleBaseURIUpdated
+        - event: Minted(indexed address,indexed uint256,indexed string,string)
+          handler: handleMinted
+        - event: NFTCreatorMigrated(indexed uint256,indexed address,indexed address)
+          handler: handleNFTCreatorMigrated
+        - event: NFTMarketUpdated(indexed address)
+          handler: handleNFTMarketUpdated
+        - event: NFTMetadataUpdated(string,string,string)
+          handler: handleNFTMetadataUpdated
+        - event: NFTOwnerMigrated(indexed uint256,indexed address,indexed address)
+          handler: handleNFTOwnerMigrated
+        - event: PaymentAddressMigrated(indexed uint256,indexed address,indexed address,address,address)
+          handler: handlePaymentAddressMigrated
+        - event: ProxyCallContractUpdated(indexed address)
+          handler: handleProxyCallContractUpdated
+        - event: TokenCreatorPaymentAddressSet(indexed address,indexed address,indexed uint256)
+          handler: handleTokenCreatorPaymentAddressSet
+        - event: TokenCreatorUpdated(indexed address,indexed address,indexed uint256)
+          handler: handleTokenCreatorUpdated
+        - event: TokenIPFSPathUpdated(indexed uint256,indexed string,string)
+          handler: handleTokenIPFSPathUpdated
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/mapping.ts

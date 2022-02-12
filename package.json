@@ -1,0 +1,16 @@
+{
+  "name": "Foundation_Nft_Query",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ ssghost/Foundation_Nft_Query",
+    "create-local": "graph create --node http://localhost:8020/ ssghost/Foundation_Nft_Query",
+    "remove-local": "graph remove --node http://localhost:8020/ ssghost/Foundation_Nft_Query",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ssghost/Foundation_Nft_Query"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.26.0",
+    "@graphprotocol/graph-ts": "0.24.1"
+  }
+}
